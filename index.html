@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <title>HANGMAN FACSMILE</title>  
+      <!-- Bootstrap        -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+      <link rel="stylesheet" href="Styles/styles.css">      
+  </head>
+  <body>
+    <div class="container">          
+      <h1>WEB GAME DEVELOPMENT<br>FALL2020: FINAL PROJECT</h1> 
+        <h2 class="text-center">HANGMAN FACSMILE</h2>
+        <p>Use the alphabet below to guess the country's capital</p>
+      </div>
+      <!-- Use this Keyboard -->
+      <div class="section" id="alphabet">
+        <p class="letter btn btn-primary" id="a">A</p>
+				<p class="letter btn btn-primary" id="b">B</p>
+				<p class="letter btn btn-primary" id="c">C</p>
+				<p class="letter btn btn-primary" id="d">D</p>
+				<p class="letter btn btn-primary" id="e">E</p>
+				<p class="letter btn btn-primary" id="f">F</p>
+				<p class="letter btn btn-primary" id="g">G</p>
+				<p class="letter btn btn-primary" id="h">H</p>
+				<p class="letter btn btn-primary" id="i">I</p>
+				<p class="letter btn btn-primary" id="j">J</p>
+				<p class="letter btn btn-primary" id="k">K</p>
+				<p class="letter btn btn-primary" id="l">L</p>
+				<p class="letter btn btn-primary" id="m">M</p>
+				<p class="letter btn btn-primary" id="n">N</p>
+				<p class="letter btn btn-primary" id="o">O</p>
+				<p class="letter btn btn-primary" id="p">P</p>
+				<p class="letter btn btn-primary" id="q">Q</p>
+				<p class="letter btn btn-primary" id="r">R</p>
+				<p class="letter btn btn-primary" id="s">S</p>
+				<p class="letter btn btn-primary" id="t">T</p>
+				<p class="letter btn btn-primary" id="u">U</p>
+				<p class="letter btn btn-primary" id="v">V</p>
+				<p class="letter btn btn-primary" id="w">W</p>
+				<p class="letter btn btn-primary" id="x">X</p>
+				<p class="letter btn btn-primary" id="y">Y</p>
+			<p class="letter btn btn-primary" id="z">Z</p>    
+        </div>
+
+     <div class="section" id="capital">
+      <h3 id="wordLines">- - - - - - - - - -</h3>
+   </div>
+
+       <div class="wrapper">
+      <button id="guess">
+        Guess!
+      </button><br><br>
+      <button id="resetGame">
+        Play Again!
+    </button>    
+     </div> 
+<!-- Disply Hangman Picture Here -->
+        <canvas
+                id="hangmanCanvas"
+                height="250"
+                width="500"
+                style="border: 0.5px solid black;"></canvas>          
+                        
+       </body>
+</html>
