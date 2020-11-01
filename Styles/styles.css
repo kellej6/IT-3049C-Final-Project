@@ -34,7 +34,7 @@ p {
 }
 .wrapper{
   margin-top: 2%;
-  margin-left: 50%;
+  /* margin-left: 50%; */
   margin-bottom: 1%;
   width: 10%;
   text-align: center;
@@ -42,18 +42,17 @@ p {
 button{
   background-color: lightskyblue;
   font-size: 1em;
+  align-items: center;
   cursor: pointer;
   width: 180px;
   border: solid 1px white;
-  
 }
-canvas{
+/* canvas{
   margin-top: -40px;
   margin-left: 2%;
-  align-items: center;
+  text-align: center;
   padding: 15px;
-  
-}
+} */
 
  .btn {
   background-color: rgb(13, 112, 112);
@@ -68,11 +67,12 @@ canvas{
   outline:none;
 
 } 
+
 #wordLines{
 color: lightblue;
 font-size: 2.5rem;
 text-align: center;
 margin-top: 3%;
-margin-left: 12%;
+/* margin-left: 12%; */
 }
  
