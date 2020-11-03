@@ -2,29 +2,25 @@ let start = document.getElementById("startButton");
 let canvas = document.getElementById("matchItCanvas");
 let countryName = document.getElementById("country");
 
-// timer
 let countDownDate = new Date();
 countDownDate.setMinutes(countDownDate.getMinutes() + 2);
 
-let countDown = setInterval(function () {
-
+function startTimer() {
     let now = new Date().getTime();
     let timeDistance = countDownDate - now;
 
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000) * minutes;
+    var minutes = Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeDistance % (1000 * 60)) / 1000);
 
-    document.getElementById("timer").innerHTML = seconds + "s";
+    document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s";
 
-    if (distance < 0) {
+    if (timeDistance < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
+        document.getElementById("timer").innerHTML = "EXPIRED";
     }
-
-}, 1000);
+};
 
 try {
-
 
     let game = new MatchIt(canvas)
 
@@ -32,7 +28,11 @@ try {
         event.preventDefault();
         game.start().then(() => {
             countryName.innerHTML = "Country name: " + game.country;
+
         });
+
+        // start the timer
+        setInterval(startTimer, 1000);
     });
 
 } catch (error) {

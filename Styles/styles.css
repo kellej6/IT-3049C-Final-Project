@@ -76,3 +76,9 @@ margin-top: 3%;
 /* margin-left: 12%; */
 }
  
+#timer{
+  color:white;
+  float: right;
+  text-align: right;
+  font-size: 20px;
+}
