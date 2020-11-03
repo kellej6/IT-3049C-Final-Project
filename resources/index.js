@@ -11,8 +11,8 @@ let countDown = setInterval(function () {
     let now = new Date().getTime();
     let timeDistance = countDownDate - now;
 
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000) * minutes;
+    var minutes = Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeDistance % (1000 * 60)) / 1000) * minutes;
 
     document.getElementById("timer").innerHTML = seconds + "s";
 
