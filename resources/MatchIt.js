@@ -5,6 +5,10 @@ class MatchIt {
         }
         this.country = "";
         this.capital = "";
+        this.guessCounter = 0;
+        this.guessArray = [];
+        this.didWin;
+        this.gameOver;
         this.canvas = _canvas;
         this.ctx = this.canvas.getContext("2d");
     }
@@ -15,9 +19,9 @@ class MatchIt {
             return await fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                console.log(data)
-                return data.name;
-            });
+                    console.log(data)
+                    return data.name;
+                });
         } catch {
             console.error(error);
             alert(error);
@@ -284,6 +288,39 @@ class MatchIt {
         const randomCountry = await this.getRandomCountry(isoCode);
         this.country = randomCountry;
         return;
+    }
+
+    //This function will call only when the player will guess the wrong letter for the capital. 
+    //If the user enter the letter which includes in the capital name then the checkWin function will be called
+    onWrongGuess() {
+        this.guessCounter++;
+        if (this.guessCounter == 1) {
+            // function for draw base of hangman
+        } else if (this.guessCounter == 2) {
+            //function for draw stand
+        } else if (this.guessCounter == 3) {
+            // function for draw top
+        } else if (this.guessCounter == 4) {
+            //function for draw hook to hang hangman
+        } else if (this.guessCounter == 5) {
+            //function for draw head   
+        } else if (this.guessCounter == 6) {
+            //function for draw body
+        } else if (this.guessCounter == 7){
+            //function for draw left arm
+        } else if (this.guessCounter == 8){
+            //function for draw right arm
+        } else if (this.guessCounter == 9){
+            //function for draw left leg
+        } else if (this.guessCounter == 10){
+            //function for draw right leg
+            this.didWin = false;
+            this.gameOver = true;
+        }
+    }
+
+    checkWin(){
+        
     }
 
 }
