@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>HANGMAN FACSMILE</title>
+  <title>Match IT</title>
   <!-- Bootstrap        -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="Styles/styles.css">
@@ -16,7 +16,9 @@
         Start!
       </button>
     </div>
-    <h2>HANGMAN FACSMILE</h2>
+    <div id="timer"></div>
+    <br >
+    <h2>Match IT</h2>
     <p>Use the alphabet below to guess the country's capital</p>
     <p id="country">Country name: </p>
     <div class="section" id="alphabet">
@@ -53,19 +55,17 @@
     </div>
 
     <div class="wrapper">
-      <button id="guess">
+      <button id="guess" disabled>
         Guess!
-      </button><br><br>
-      <button id="resetGame">
+      </button>
+      <br><br>
+      <button id="resetGame" disabled>
         Play Again!
       </button>
     </div>
     <br> <br>
     <!-- Disply Hangman Picture Here -->
-    <canvas id="matchItCanvas"
-      height="300"
-      width="500"
-      style="border: 1px solid black;">
+    <canvas id="matchItCanvas" height="300" width="500" style="border: 1px solid black;">
     </canvas>
   </div>
 
