@@ -30,10 +30,10 @@ try {
         event.preventDefault();
         game.start().then(() => {
             countryName.innerHTML = "Country name: " + game.country;
+          
             start.disabled = true;
             guessButton.disabled = false;
             playAgainButton.disabled = false;
-        });
 
         // start the timer
         setInterval(startTimer, 1000);
