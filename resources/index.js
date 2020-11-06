@@ -1,6 +1,8 @@
 let start = document.getElementById("startButton");
 let canvas = document.getElementById("matchItCanvas");
 let countryName = document.getElementById("country");
+let guessButton = document.getElementById("guess");
+let playAgainButton = document.getElementById("resetGame");
 
 let countDownDate = new Date();
 countDownDate.setMinutes(countDownDate.getMinutes() + 2);
@@ -28,8 +30,10 @@ try {
         event.preventDefault();
         game.start().then(() => {
             countryName.innerHTML = "Country name: " + game.country;
-
-        });
+          
+            start.disabled = true;
+            guessButton.disabled = false;
+            playAgainButton.disabled = false;
 
         // start the timer
         setInterval(startTimer, 1000);
