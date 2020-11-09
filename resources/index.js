@@ -44,6 +44,16 @@ try {
     })   
     });     
 
+    resetGame.addEventListener('click', function (e){
+            
+        countryName.innerHTML = "";        
+        start.disabled = false;
+        guessButton.disabled = true;
+        playAgainButton.disabled = true;
+        
+    });
+
+
      } catch (error) {
     console.error(error);
     alert(error);
