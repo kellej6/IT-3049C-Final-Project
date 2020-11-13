@@ -5,8 +5,10 @@ class MatchIt {
         }
         this.country = "";
         this.capital = "";
+        this.wordHolderCounter = 0;
         this.guessCounter = 0;
-        this.guessArray = [];
+        this.guesses = new Array();
+        this.previousGuessedWord = new Array();
         this.didWin;
         this.gameOver;
         this.canvas = _canvas;
@@ -20,6 +22,7 @@ class MatchIt {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
+                    this.capital = data.capital.toLowerCase();
                     return data.name;
                 });
         } catch {
@@ -29,7 +32,7 @@ class MatchIt {
     }
 
     async start() {
-        var countriesIsoCode = ["AF",
+        const countriesIsoCode = ["AF",
             "AX",
             "AL",
             "DZ",
@@ -290,6 +293,35 @@ class MatchIt {
         return;
     }
 
+    guess(letter) {
+        var checkCase = /^[A-Za-z]+$/;
+        try{
+          if(letter.length == 0){
+            throw new Error("Please provide a letter.");
+          } else if (!(letter.match(checkCase)) && letter == " "){
+            throw new Error("Guess should be a letter.");
+          } else if (letter.length > 1){
+            throw new Error("Please provide one letter.");
+          } else {
+            letter = letter.toLowerCase();
+            if(this.guesses.includes(letter)){
+              throw new Error ("Letter already exists, please provide a new one.");
+            } else {
+              this.guesses.push(letter);
+            }
+            if(this.capital.includes(letter)){
+              this.checkWin();
+            } else{
+              this.onWrongGuess();
+            }
+          }
+        }
+        catch (error){
+          // console.error(error);
+          alert(error);
+        }
+    }
+
     //This function will call only when the player will guess the wrong letter for the capital. 
     //If the user enter the letter which includes in the capital name then the checkWin function will be called
     onWrongGuess() {
@@ -323,6 +355,36 @@ class MatchIt {
         
     }
 
-}
+    getWordHolderText() {
+    
+        let wordHolder = "";
+        var checkCase = /^[A-Za-z]+$/;
+        for (let i = 0; i < this.capital.length; i++){
+          if(this.capital[i] == this.guesses[this.guesses.length -1]){
+            wordHolder += this.capital[i];
+          }
+          else{
+            wordHolder += "_";
+          }
+        }
+    
+        if(this.wordHolderCounter == 0){
+          this.previousGuessedWord.push(wordHolder);
+          this.wordHolderCounter++;
+        }
+    
+        let previousGuessed = this.previousGuessedWord[this.previousGuessedWord.length - 1].split("");
+        let i = 0;
+        while(i < this.capital.length){
+          if(previousGuessed[i] == "_" && wordHolder[i].match(checkCase)){
+            previousGuessed[i] = wordHolder[i];
+          }
+          i++;
+        }
+        this.previousGuessedWord[this.previousGuessedWord.length - 1] = previousGuessed.join("");
+        return previousGuessed.join("");
+    
+      }
 
+}
 

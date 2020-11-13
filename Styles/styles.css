@@ -1,6 +1,6 @@
-  body{
+body{
    background-color: rgb(13, 112, 112);
- }
+}
  
 h1 {
   color: rgb(153, 151, 147);
@@ -33,13 +33,32 @@ p {
 	align-content: flex-start;
 }
 .wrapper{
+  float: left;
+  /* margin-left: %;   */
+  margin-bottom: 1%;
+  
+  text-align: center;
+  clear: both;
+  height: 300px;
+  width:500px;
+  border: 1px solid black;
+  padding-top: 110px;
+}
+
+#capital{
+  margin: 4%;
+  text-align: center;
+  font-size: medium;
+}
+
+.startButtonWrapper{
   margin-top: 2%;
-  /* margin-left: 50%; */
   margin-bottom: 1%;
   width: 10%;
   text-align: center;
 }
-button{
+
+#guessSubmitButton, #resetGame, #startButton{
   background-color: lightskyblue;
   font-size: 1em;
   align-items: center;
@@ -47,12 +66,24 @@ button{
   width: 180px;
   border: solid 1px white;
 }
+
+#guessInput{
+  /* padding: 5%; */
+  margin-bottom: 2%;
+  box-sizing: border-box;
+}
+
 /* canvas{
   margin-top: -40px;
   margin-left: 2%;
   text-align: center;
   padding: 15px;
 } */
+
+.canvas{
+  float: right;
+
+}
 
  .btn {
   background-color: rgb(13, 112, 112);
@@ -68,11 +99,11 @@ button{
 
 } 
 
-#wordLines{
+/* #wordLines{
 color: lightblue;
 font-size: 2.5rem;
 text-align: center;
 margin-top: 3%;
 /* margin-left: 12%; */
-}
- 
+/* }
+  */
