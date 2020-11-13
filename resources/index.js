@@ -8,21 +8,21 @@ let capital = document.getElementById("capital");
 let countDownDate = new Date();
 countDownDate.setMinutes(countDownDate.getMinutes() + 2);
 
-// function startTimer() {
-//     let now = new Date().getTime();
-//     let timeDistance = countDownDate - now;
+function startTimer() {
+    let now = new Date().getTime();
+    let timeDistance = countDownDate - now;
 
-//     var minutes = Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60));
-//     var seconds = Math.floor((timeDistance % (1000 * 60)) / 1000);
+    var minutes = Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeDistance % (1000 * 60)) / 1000);
 
-//     document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s";
+    document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s";
 
-//     if (timeDistance < 0) {
-//         clearInterval(x);
-//         document.getElementById("timer").innerHTML = "EXPIRED";
-//         playAgainButton.disabled = false;
-//     }
-// };
+    if (timeDistance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+        playAgainButton.disabled = false;
+    }
+};
 
 try {
 
@@ -38,7 +38,7 @@ try {
         });
 
         // start the timer
-        //setInterval(startTimer, 1000);
+        setInterval(startTimer, 1000);
     });
 
     guessForm.addEventListener("submit", function (e) {
