@@ -11,13 +11,13 @@
 <body>
   <div class="container">
     <h1>WEB GAME DEVELOPMENT<br>FALL2020: FINAL PROJECT</h1>
-    <div class="wrapper">
+    <div class="startButtonWrapper">
       <button id="startButton">
         Start!
       </button>
     </div>
     <div id="timer"></div>
-    <br >
+    <br>
     <h2>Match IT</h2>
     <p>Use the alphabet below to guess the country's capital</p>
     <p id="country">Country name: </p>
@@ -50,23 +50,32 @@
       <p class="letter btn btn-primary" id="z">Z</p>
     </div>
 
-    <div class="section" id="capital">
-      <h3 id="wordLines">- - - - - - - - - -</h3>
+    <div class="section">
+      <h2 id="capital"></h3> 
     </div>
 
-    <div class="wrapper">
-      <button id="guess" disabled>
-        Guess!
-      </button>
-      <br><br>
-      <button id="resetGame" disabled>
-        Play Again!
-      </button>
+    <div>
+      <div class="wrapper">
+        <form id="guessForm">
+          <input 
+              type="text"
+              id="guessInput"
+              placeholder="Guess a letter!"
+          />
+          <input type="submit" id="guessSubmitButton" value="Guess" disabled/>
+        </form>
+        <button id="resetGame" disabled>
+          Play Again!
+        </button>
+      </div>
+      <div class="canvas">
+        <!-- Disply Hangman Picture Here -->
+        <canvas id="matchItCanvas" height="300" width="500" style="border: 1px solid black;">
+        </canvas>
+      </div>
     </div>
-    <br> <br>
-    <!-- Disply Hangman Picture Here -->
-    <canvas id="matchItCanvas" height="300" width="500" style="border: 1px solid black;">
-    </canvas>
+    
+
   </div>
 
   <!-- Use this Keyboard -->
