@@ -47,17 +47,17 @@ try {
         // start the timer
         
         setInterval(startTimer, 1000)
-    })   
+   // })   
     });     
 
-    resetGame.addEventListener('click', function (e){
+    // resetGame.addEventListener('click', function (e){
             
-        countryName.innerHTML = "";        
-        start.disabled = false;
-        guessButton.disabled = true;
-        playAgainButton.disabled = true;
+    //     countryName.innerHTML = "";        
+    //     start.disabled = false;
+    //     guessButton.disabled = true;
+    //     playAgainButton.disabled = true;
         
-    });
+    // });
 
 
     guessForm.addEventListener("submit", function (e) {
@@ -79,10 +79,22 @@ try {
       });
 
 
+      resetGame.addEventListener('click', function (e){
+            
+        countryName.innerHTML = ""; 
+        capital.innerHTML = "";
+        start.disabled = false;
+        guessButton.disabled = true;
+        playAgainButton.disabled = true;
+       // document.getElementById("capital").innerHTML = "";
+    });
+
+
 } catch (error) {
 
     console.error(error);
     alert(error);
 }
+
  
 
