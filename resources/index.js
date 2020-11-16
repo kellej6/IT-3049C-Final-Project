@@ -5,11 +5,11 @@ let guessButton = document.getElementById("guessSubmitButton");
 let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
 
-//var interval = setInterval(startTimer, 1000);
+var interval = setInterval(startTimer, 1000);
 
 let countDownDate = new Date();
 countDownDate.setMinutes(countDownDate.getMinutes() + 2);
-//var interval;
+
 function startTimer() {
     let now = new Date().getTime();
     let timeDistance = countDownDate - now;
@@ -46,8 +46,8 @@ try {
 
         // start the timer
         
-        setInterval(startTimer, 1000)
-   // })   
+       setInterval(startTimer, 1000)
+   //})   
     });     
 
     // resetGame.addEventListener('click', function (e){
@@ -77,19 +77,11 @@ try {
           }
         }
       });
-
-
-      resetGame.addEventListener('click', function (e){
+      // function resetGame() {
+      //   location.reload();
+        
+      //   }   
             
-        countryName.innerHTML = ""; 
-        capital.innerHTML = "";
-        start.disabled = false;
-        guessButton.disabled = true;
-        playAgainButton.disabled = true;
-       // document.getElementById("capital").innerHTML = "";
-    });
-
-
 } catch (error) {
 
     console.error(error);
