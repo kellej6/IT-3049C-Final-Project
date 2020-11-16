@@ -64,10 +64,14 @@
           />
           <input type="submit" id="guessSubmitButton" value="Guess" disabled/>
         </form>
-        <button id="resetGame" disabled>
+        <!-- <button id="resetGame" disabled>
           Play Again!
-        </button>
+        </button> -->
+        <button onclick="resetGame()"  id="resetGame">
+          Play Again!
+        </button>       
       </div>
+      
       <div class="canvas">
         <!-- Disply Hangman Picture Here -->
         <canvas id="matchItCanvas" height="300" width="500" style="border: 1px solid black;">
