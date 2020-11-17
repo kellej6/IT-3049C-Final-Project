@@ -21,6 +21,7 @@ function startTimer() {
         clearInterval(x);
         document.getElementById("timer").innerHTML = "EXPIRED";
         playAgainButton.disabled = false;
+        guessButton.disabled = true;
     }
 };
 
@@ -48,7 +49,7 @@ try {
         capital.innerHTML = game.getWordHolderText();
         guessInput.value = "";
         if(game.isOver == true){
-          guessSubmitButton.disabled = true;
+          guessButton.disabled = true;
           guessInput.disabled = true;
           resetGame.style.display = "block";
           if(game.didWin == true){
