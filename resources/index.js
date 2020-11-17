@@ -82,6 +82,37 @@ for (var i = 0; i < hangman.alphabetArray.length; i++) {
   }).appendTo("#buttondiv");
 }
 
+function getWordHolderText() {
+ 
+  let wordHolder = "";
+  var checkCase = /^[A-Za-z]+$/;
+  for (let i = 0; i < this.word.length; i++){
+  if(this.word[i] == this.guesses[this.guesses.length -1]){
+  wordHolder += this.word[i];
+  }
+  else{
+  wordHolder += "_";
+  }
+  }
+  
+  if(this.wordHolderCounter == 0){
+  this.previousGuessedWord.push(wordHolder);
+  this.wordHolderCounter++;
+  }
+  
+  let previousGuessed = this.previousGuessedWord[this.previousGuessedWord.length - 1].split("");
+  let i = 0;
+  while(i < this.word.length){
+  if(previousGuessed[i] == "_" && wordHolder[i].match(checkCase)){
+  previousGuessed[i] = wordHolder[i];
+  }
+  i++;
+  }
+  this.previousGuessedWord[this.previousGuessedWord.length - 1] = previousGuessed.join("");
+  return previousGuessed.join("");
+  
+  }
+
 function disableButtons() {
   $("#buttondiv button").attr("disabled", "disabled");
 }
