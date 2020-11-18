@@ -291,7 +291,7 @@ class MatchIt {
         const randomCountry = await this.getRandomCountry(isoCode);
         this.country = randomCountry;
         this.clearCanvas();
-        this.drawBase();
+        //this.drawBase();
         return;
     }
 
@@ -327,29 +327,39 @@ class MatchIt {
     //This function will call only when the player will guess the wrong letter for the capital. 
     //If the user enter the letter which includes in the capital name then the checkWin function will be called
     onWrongGuess() {
-        this.guessCounter++;
-        if (this.guessCounter == 1) {
-            // function for draw base of hangman
-        } else if (this.guessCounter == 2) {
-            //function for draw stand
-        } else if (this.guessCounter == 3) {
-            // function for draw top
-        } else if (this.guessCounter == 4) {
-            //function for draw hook to hang hangman
-        } else if (this.guessCounter == 5) {
-            //function for draw head   
-        } else if (this.guessCounter == 6) {
-            //function for draw body
-        } else if (this.guessCounter == 7){
-            //function for draw left arm
-        } else if (this.guessCounter == 8){
-            //function for draw right arm
-        } else if (this.guessCounter == 9){
-            //function for draw left leg
-        } else if (this.guessCounter == 10){
-            //function for draw right leg
-            this.didWin = false;
-            this.gameOver = true;
+      this.guessCounter++;
+      if (this.guessCounter == 1) {
+          // function for draw base of hangman
+          this.drawBase();
+      } else if (this.guessCounter == 2) {
+          //function for draw Main Beam
+          this.drawMainBeam();
+      } else if (this.guessCounter == 3) {
+          // function for draw top
+          this.drawTop();
+      } else if (this.guessCounter == 4) {
+          //function for draw hook to hang hangman
+          this.drawNoose();
+      } else if (this.guessCounter == 5) {
+          //function for draw head 
+          this.drawHead();
+      } else if (this.guessCounter == 6) {
+          //function for draw body
+          this.drawBody();
+      } else if (this.guessCounter == 7){          
+          //function for draw left arm
+          this.drawLeftArm();
+      } else if (this.guessCounter == 8){
+          //function for draw right arm
+          this.drawRightArm();
+      } else if (this.guessCounter == 9){
+          //function for draw left leg
+          this.drawLeftLeg();
+      } else if (this.guessCounter == 10){
+          //function for draw right leg
+          this.drawRightLeg();
+          this.didWin = false;
+          this.gameOver = true;
         }
     }
 
@@ -394,10 +404,69 @@ clearCanvas() {
 }
 
 drawBase() {
-  this.ctx.fillRect(95, 10, 150, 10); // Top  
-  this.ctx.fillRect(245, 10, 10, 50); // Noose
-  this.ctx.fillRect(95, 10, 10, 280); // Main beam
-  this.ctx.fillRect(10, 290, 175, 10); // Base  
+  this.ctx.fillStyle='white';  
+  this.ctx.fillRect(10, 290, 175, 10); // Base 
+}
 
+drawMainBeam() {
+  this.ctx.fillStyle='white';
+  this.ctx.fillRect(95, 10, 10, 280);
+
+}
+
+drawNoose() {
+  this.ctx.fillStyle='white';
+  this.ctx.fillRect(245, 10, 10, 50);
+
+}
+
+drawTop() {
+ this.ctx.fillStyle='white';
+ this.ctx.fillRect(95, 10, 150, 10);
+
+}
+
+drawHead() {
+this.ctx.fillStyle='white';
+this.ctx.beginPath();
+this.ctx.arc(250, 100, 40, 0, 2 * Math.PI);
+this.ctx.stroke();
+
+}
+
+drawBody() {
+//var ctx = canvas.getContext("2d");
+this.ctx.beginPath();
+this.ctx.moveTo(250, 140);
+this.ctx.lineTo(250, 270);
+this.ctx.stroke();
+}
+
+drawLeftArm() {
+this.ctx.beginPath();
+this.ctx.moveTo(250, 140);
+this.ctx.lineTo(170, 200);
+this.ctx.stroke();
+}
+
+drawRightArm() {
+this.ctx.beginPath();
+this.ctx.moveTo(250, 140);
+this.ctx.lineTo(340, 200);
+this.ctx.stroke();
+}
+
+drawLeftLeg() {
+this.ctx.beginPath();
+this.ctx.moveTo(250, 270);
+this.ctx.lineTo(170, 390);
+this.ctx.stroke();
+}
+
+drawRightLeg() {
+this.ctx.beginPath();
+this.ctx.moveTo(250, 270);
+this.ctx.lineTo(320, 390);
+this.ctx.stroke();
 }
 }
