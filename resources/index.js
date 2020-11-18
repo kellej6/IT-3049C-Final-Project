@@ -46,8 +46,7 @@ try {
 
         // start the timer
         
-       setInterval(startTimer, 1000)
-   //})   
+       setInterval(startTimer, 1000)    
     });     
 
     // resetGame.addEventListener('click', function (e){
