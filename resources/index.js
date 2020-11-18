@@ -46,19 +46,10 @@ try {
 
         // start the timer
         
-       setInterval(startTimer, 1000)    
-    });     
-
-    // resetGame.addEventListener('click', function (e){
-            
-    //     countryName.innerHTML = "";        
-    //     start.disabled = false;
-    //     guessButton.disabled = true;
-    //     playAgainButton.disabled = true;
-        
-    // });
-
-
+       setInterval(startTimer, 1000)
+      
+    });  
+    
     guessForm.addEventListener("submit", function (e) {
         e.preventDefault();
         guessInput = document.getElementById("guessInput");
@@ -76,10 +67,10 @@ try {
           }
         }
       });
-      // function resetGame() {
-      //   location.reload();
+      function resetGame() {
+        location.reload();
         
-      //   }   
+        }   
             
 } catch (error) {
 

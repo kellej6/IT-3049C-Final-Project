@@ -290,8 +290,8 @@ class MatchIt {
         var isoCode = countriesIsoCode[Math.floor(randValue)];
         const randomCountry = await this.getRandomCountry(isoCode);
         this.country = randomCountry;
-        //this.clearCanvas();
-       // this.drawBase();
+        this.clearCanvas();
+        this.drawBase();
         return;
     }
 
@@ -388,4 +388,16 @@ class MatchIt {
     
       }
 
- }
+
+clearCanvas() {
+  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+}
+
+drawBase() {
+  this.ctx.fillRect(95, 10, 150, 10); // Top  
+  this.ctx.fillRect(245, 10, 10, 50); // Noose
+  this.ctx.fillRect(95, 10, 10, 280); // Main beam
+  this.ctx.fillRect(10, 290, 175, 10); // Base  
+
+}
+}
