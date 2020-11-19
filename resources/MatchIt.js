@@ -6,11 +6,13 @@ class MatchIt {
     this.country = "";
     this.capital = "";
     this.wordHolderCounter = 0;
+    this.score = 0;
     this.guessCounter = 0;
     this.guesses = new Array();
     this.previousGuessedWord = new Array();
-    this.didWin;
-    this.gameOver;
+    // this.didWin;
+    // this.isOver;
+
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext("2d");
   }
@@ -367,15 +369,24 @@ class MatchIt {
       case 10:
         //function for draw right leg
         this.drawRightLeg();
-        this.didWin = false;
+        this.userGuessedCapital = false;
+
         this.isOver = true;
         break;
     }
   }
 
-  checkWin() {
 
+  checkWin() {
+    const guessedWord = this.getWordHolderText();
+    if (guessedWord === this.capital) {
+      this.score++;
+      this.userGuessedCapital = true;
+      this.isOver = true;
+
+    }
   }
+
 
   getWordHolderText() {
 
@@ -408,6 +419,16 @@ class MatchIt {
 
   }
 
+  resetGameData() {
+    this.country = "";
+    this.capital = "";
+    this.wordHolderCounter = 0;
+    this.guessCounter = 0;
+    this.guesses = [];
+    this.previousGuessedWord = [];
+    this.isOver = false;
+    this.userGuessedCapital = false;
+  }
 
   clearCanvas() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -435,6 +456,7 @@ class MatchIt {
     this.ctx.fillRect(95, 10, 150, 10);
 
   }
+
 
   drawHead() {
     this.ctx.fillStyle = 'white';

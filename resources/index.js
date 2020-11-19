@@ -4,17 +4,21 @@ let countryName = document.getElementById("country");
 let guessButton = document.getElementById("guessSubmitButton");
 let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
+let gameScore = document.getElementById("gameScore");
 
 let timer;  // the timer function
 let twoMinutesFromNow; // the time two minutes from now
 let win_count = 0; //  the count of times the player has won
+let distance;
+
+let game = new MatchIt(canvas)
 
 function countdown() {
   // the time as of right now
   let rightnow = new Date().getTime();
 
   // the time differential between right now and two minutes from now
-  let distance = twoMinutesFromNow - rightnow;
+  distance = twoMinutesFromNow - rightnow;
   console.log(distance);
 
   // the time expansion into units of time
@@ -29,8 +33,13 @@ function countdown() {
   if (distance < 0) {
     document.getElementById("timer").innerHTML = "EXPIRED";
     clearInterval(timer);
+    playAgainButton.disabled = false;
+    guessSubmitButton.disabled = true;
+    guessInput.disabled = true;
+    gameScore.innerHTML = "Your Score is: " + game.score;
   }
 }
+
 
 // set the variable "twoMinutesFromNow" to two minutes and two seconds from right now
 function setTimer() {
@@ -45,14 +54,11 @@ function setTimer() {
     case 10:
       twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 30);
       break;
-
     case 20:
       twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 60);
       break;
-
     case 30:
       twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 90);
-
     default:
       break;
   }
@@ -67,27 +73,36 @@ function startTimer() {
 // stop the timer
 function stopTimer() {
   clearInterval(timer);
-  win_count++;
 }
 
-try {
 
-  let game = new MatchIt(canvas)
+  // decrement the timer by 30 seconds for each 10 additional wins
+  switch (win_count) {
+    case 10:
+      twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 30);
+      break;
 
 
   start.addEventListener("click", function (event) {
     event.preventDefault();
+    startFunction();
+    
+    // start the timer
+    startTimer();
+
+  });
+
+  function startFunction(){
+
     game.start().then(() => {
       countryName.innerHTML = "Country name: " + game.country;
       start.disabled = true;
       capital.innerHTML = game.getWordHolderText();
       guessButton.disabled = false;
+      playAgainButton.disabled=true;
+
     });
-
-    // start the timer 
-    startTimer();
-
-  });
+  }
 
   guessForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -95,20 +110,25 @@ try {
     game.guess(guessInput.value);
     capital.innerHTML = game.getWordHolderText();
     guessInput.value = "";
-
-    if (game.isOver == true) {
-
-      stopTimer();
-      guessSubmitButton.disabled = true;
-      guessInput.disabled = true;
-      resetGame.style.display = "block";
-      if (game.didWin == true) {
-        alert("Congratulations! You won.");
-      } else {
-        alert("Game Lost.");
+    if(game.isOver == true){
+      if(game.userGuessedCapital == true && distance > 0){
+        game.resetGameData();
+        capital.innerHTML = "";
+        countryName.innerHTML = "Country name: ";
+        win_count++;
+        gameScore.innerHTML = "Your Score is: " + game.score;
+        startFunction();
+      } else if (game.userGuessedCapital == false){
+        guessSubmitButton.disabled = true;
+        guessInput.disabled = true;
+        playAgainButton.disabled = false;
+        gameScore.innerHTML = "Your Score is: " + game.score;
+        stopTimer();
+        alert("Unfortunately! You did not guess.")
       }
     }
   });
+
 
   function resetGame() {
     location.reload();
@@ -120,3 +140,4 @@ try {
   console.error(error);
   alert(error);
 }
+
