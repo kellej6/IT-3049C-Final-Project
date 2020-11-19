@@ -12,6 +12,7 @@ class MatchIt {
     this.previousGuessedWord = new Array();
     // this.didWin;
     // this.isOver;
+
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext("2d");
   }
@@ -369,10 +370,12 @@ class MatchIt {
         //function for draw right leg
         this.drawRightLeg();
         this.userGuessedCapital = false;
+
         this.isOver = true;
         break;
     }
   }
+
 
   checkWin() {
     const guessedWord = this.getWordHolderText();
@@ -380,8 +383,10 @@ class MatchIt {
       this.score++;
       this.userGuessedCapital = true;
       this.isOver = true;
+
     }
   }
+
 
   getWordHolderText() {
 
@@ -451,6 +456,7 @@ class MatchIt {
     this.ctx.fillRect(95, 10, 150, 10);
 
   }
+
 
   drawHead() {
     this.ctx.fillStyle = 'white';

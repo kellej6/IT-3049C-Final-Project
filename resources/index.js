@@ -40,6 +40,7 @@ function countdown() {
   }
 }
 
+
 // set the variable "twoMinutesFromNow" to two minutes and two seconds from right now
 function setTimer() {
   twoMinutesFromNow = new Date();
@@ -74,7 +75,13 @@ function stopTimer() {
   clearInterval(timer);
 }
 
-try {
+
+  // decrement the timer by 30 seconds for each 10 additional wins
+  switch (win_count) {
+    case 10:
+      twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 30);
+      break;
+
 
   start.addEventListener("click", function (event) {
     event.preventDefault();
@@ -86,12 +93,14 @@ try {
   });
 
   function startFunction(){
+
     game.start().then(() => {
       countryName.innerHTML = "Country name: " + game.country;
       start.disabled = true;
       capital.innerHTML = game.getWordHolderText();
       guessButton.disabled = false;
       playAgainButton.disabled=true;
+
     });
   }
 
@@ -120,8 +129,10 @@ try {
     }
   });
 
+
   function resetGame() {
     location.reload();
+
   }
 
 } catch (error) {
@@ -129,6 +140,4 @@ try {
   console.error(error);
   alert(error);
 }
-
-
 
