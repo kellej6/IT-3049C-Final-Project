@@ -5,24 +5,24 @@ let guessButton = document.getElementById("guessSubmitButton");
 let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
 
-var timer;  // the timer function
-var twoMinutesFromNow; // the time two minutes from now
-var win_count = 0; //  the count of times the player has won
+let timer;  // the timer function
+let twoMinutesFromNow; // the time two minutes from now
+let win_count = 0; //  the count of times the player has won
 
 function countdown() {
   // the time as of right now
-  var rightnow = new Date().getTime();
+  let rightnow = new Date().getTime();
 
   // the time differential between right now and two minutes from now
-  var distance = twoMinutesFromNow - rightnow;
+  let distance = twoMinutesFromNow - rightnow;
   console.log(distance);
 
   // the time expansion into units of time
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // format the time that will display on the board
-  var text = minutes + "m " + seconds + "s ";
+  let text = minutes + "m " + seconds + "s ";
   document.getElementById("timer").innerHTML = text;
 
   // if the timer runs out, display "expired" and stop the timer
