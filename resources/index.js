@@ -81,7 +81,7 @@ function stopTimer() {
     case 10:
       twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 30);
       break;
-
+  }
 
   start.addEventListener("click", function (event) {
     event.preventDefault();
@@ -124,20 +124,20 @@ function stopTimer() {
         playAgainButton.disabled = false;
         gameScore.innerHTML = "Your Score is: " + game.score;
         stopTimer();
-        alert("Unfortunately! You did not guess.")
-      }
-    }
-  });
+        alert("Unfortunately! You did not guess.");
+      }    
+    }   
+});       
 
-
+  
   function resetGame() {
-    location.reload();
+    location.reload()
 
-  }
-
+  };
+ try{  
 } catch (error) {
-
   console.error(error);
   alert(error);
-}
-
+}   
+ // }
+//}

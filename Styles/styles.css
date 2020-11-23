@@ -12,7 +12,7 @@ h2 {
    color: white;
    font-family: Arial, Helvetica, sans-serif;
    font-size: 25px;
-   margin-top: 3%;
+   margin-top: 0%;
    text-align: center;
    
 }
@@ -20,14 +20,14 @@ p {
  color: white;
    font-family: Arial, Helvetica, sans-serif;
    font-size: 20px;
-   margin-top: 2%;
+   margin-top: 1%;
    text-align: center;
 }
 #alphabet {
  grid-area: alphabet;
  display: flex;
  flex-wrap: wrap;
- margin-top: 2%;
+ margin-top: 1%;
  justify-content: space-around;
  align-items: flex-start;
  align-content: flex-start;
@@ -51,7 +51,7 @@ p {
 }
 
 .startButtonWrapper{
- margin-top: 2%;
+ margin-top: 1%;
  margin-bottom: 1%;
  width: 10%;
  text-align: center;
