@@ -458,16 +458,17 @@ class MatchIt {
   }
 
 
-  drawHead() {
-    this.ctx.fillStyle = 'white';
+  drawHead() {    
+    this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
     this.ctx.arc(250, 100, 40, 0, 2 * Math.PI);
     this.ctx.stroke();
+    
 
   }
 
   drawBody() {
-    //var ctx = canvas.getContext("2d");
+    this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
     this.ctx.moveTo(250, 140);
     this.ctx.lineTo(250, 270);
@@ -475,6 +476,7 @@ class MatchIt {
   }
 
   drawLeftArm() {
+    this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
     this.ctx.moveTo(250, 140);
     this.ctx.lineTo(170, 200);
@@ -482,6 +484,7 @@ class MatchIt {
   }
 
   drawRightArm() {
+    this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
     this.ctx.moveTo(250, 140);
     this.ctx.lineTo(340, 200);
@@ -489,6 +492,7 @@ class MatchIt {
   }
 
   drawLeftLeg() {
+    this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
     this.ctx.moveTo(250, 270);
     this.ctx.lineTo(170, 390);
@@ -496,6 +500,7 @@ class MatchIt {
   }
 
   drawRightLeg() {
+    this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
     this.ctx.moveTo(250, 270);
     this.ctx.lineTo(320, 390);
