@@ -104,9 +104,14 @@ function stopTimer() {
     });
   }
 
+  function passToGuessInput(id){
+    document.getElementById("guessInput").value = id;
+  }
+
   guessForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    guessInput = document.getElementById("guessInput");
+    guessInput = document.getElementById("guessInput"); //h
+    document.getElementById(guessInput.value).disabled = true;
     game.guess(guessInput.value);
     capital.innerHTML = game.getWordHolderText();
     guessInput.value = "";
