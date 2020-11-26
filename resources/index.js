@@ -95,6 +95,8 @@ function stopTimer() {
   function startFunction(){
 
     game.start().then(() => {
+      document.getElementById("countryFlag").src = "https://img.geonames.org/flags/x/" + game.isoCode.toLowerCase() + ".gif";
+      document.getElementById("countryFlag").style.display = "block";
       countryName.innerHTML = "Country name: " + game.country;
       start.disabled = true;
       capital.innerHTML = game.getWordHolderText();
