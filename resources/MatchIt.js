@@ -10,6 +10,7 @@ class MatchIt {
     this.guessCounter = 0;
     this.guesses = new Array();
     this.previousGuessedWord = new Array();
+    this.isoCode;
     // this.didWin;
     // this.isOver;
 
@@ -289,8 +290,8 @@ class MatchIt {
       "ZW"];
 
     var randValue = (Math.random() * 253);
-    var isoCode = countriesIsoCode[Math.floor(randValue)];
-    const randomCountry = await this.getRandomCountry(isoCode);
+    this.isoCode = countriesIsoCode[Math.floor(randValue)];
+    const randomCountry = await this.getRandomCountry(this.isoCode);
     this.country = randomCountry;
     this.clearCanvas();
     return;
