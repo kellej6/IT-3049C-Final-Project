@@ -110,6 +110,7 @@ function stopTimer() {
     document.getElementById("guessInput").value = id;
     guessInput = document.getElementById("guessInput"); //h
     document.getElementById(guessInput.value).disabled = true;
+    
   }
 
   guessForm.addEventListener("submit", function (e) {
@@ -120,7 +121,9 @@ function stopTimer() {
     capital.innerHTML = game.getWordHolderText();
     guessInput.value = "";
     if(game.isOver == true){
+      
       if(game.userGuessedCapital == true && distance > 0){
+        document.getElementsByClassName("letter btn btn-primary").disabled = false;
         game.resetGameData();
         capital.innerHTML = "";
         countryName.innerHTML = "Country name: ";
