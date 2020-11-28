@@ -436,33 +436,30 @@ class MatchIt {
   }
 
   drawBase() {
-    this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(10, 290, 175, 10); // Base 
+    this.ctx.fillStyle = 'white';     
+    this.ctx.fillRect(162.5, 290, 175, 10);
   }
 
   drawMainBeam() {
-    this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(95, 10, 10, 280);
-
+    this.ctx.fillStyle = 'white';    
+    this.ctx.fillRect(245, 10, 10, 280);
   }
 
   drawNoose() {
-    this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(245, 10, 10, 50);
-
+    this.ctx.fillStyle = 'white';    
+    this.ctx.fillRect(395, 10, 10, 50);
   }
 
   drawTop() {
-    this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(95, 10, 150, 10);
-
+    this.ctx.fillStyle = 'white';    
+    this.ctx.fillRect(245, 10, 150, 10);
   }
 
 
   drawHead() {    
     this.ctx.strokeStyle ='white';
-    this.ctx.beginPath();
-    this.ctx.arc(250, 100, 40, 0, 2 * Math.PI);
+    this.ctx.beginPath();    
+    this.ctx.arc(400, 100, 40, 0, 2 * Math.PI);
     this.ctx.stroke();
     
 
@@ -470,41 +467,41 @@ class MatchIt {
 
   drawBody() {
     this.ctx.strokeStyle ='white';
-    this.ctx.beginPath();
-    this.ctx.moveTo(250, 140);
-    this.ctx.lineTo(250, 270);
+    this.ctx.beginPath();    
+   this.ctx.moveTo(400, 140);
+    this.ctx.lineTo(400, 270);
     this.ctx.stroke();
   }
 
   drawLeftArm() {
     this.ctx.strokeStyle ='white';
-    this.ctx.beginPath();
-    this.ctx.moveTo(250, 140);
-    this.ctx.lineTo(170, 200);
+    this.ctx.beginPath();    
+    this.ctx.moveTo(400, 140);
+    this.ctx.lineTo(320, 200);
     this.ctx.stroke();
   }
 
   drawRightArm() {
     this.ctx.strokeStyle ='white';
     this.ctx.beginPath();
-    this.ctx.moveTo(250, 140);
-    this.ctx.lineTo(340, 200);
+    this.ctx.moveTo(400, 140);
+    this.ctx.lineTo(490, 200);
     this.ctx.stroke();
   }
 
   drawLeftLeg() {
     this.ctx.strokeStyle ='white';
-    this.ctx.beginPath();
-    this.ctx.moveTo(250, 270);
-    this.ctx.lineTo(170, 390);
+    this.ctx.beginPath();    
+    this.ctx.moveTo(400, 270);
+    this.ctx.lineTo(320, 390);
     this.ctx.stroke();
   }
 
   drawRightLeg() {
     this.ctx.strokeStyle ='white';
-    this.ctx.beginPath();
-    this.ctx.moveTo(250, 270);
-    this.ctx.lineTo(320, 390);
+    this.ctx.beginPath();    
+    this.ctx.moveTo(400, 270);
+    this.ctx.lineTo(490, 390);
     this.ctx.stroke();
   }
 }
