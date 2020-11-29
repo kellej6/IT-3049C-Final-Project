@@ -5,6 +5,7 @@ let guessButton = document.getElementById("guessSubmitButton");
 let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
 let gameScore = document.getElementById("gameScore");
+let buttonArray = new Array[];
 
 let timer;  // the timer function
 let twoMinutesFromNow; // the time two minutes from now
@@ -116,6 +117,7 @@ function stopTimer() {
   guessForm.addEventListener("submit", function (e) {
     e.preventDefault();
     guessInput = document.getElementById("guessInput"); //h
+    buttonArray.push(guessInput.value);
     //document.getElementById(guessInput.value).disabled = true;
     game.guess(guessInput.value);
     capital.innerHTML = game.getWordHolderText();
@@ -123,10 +125,13 @@ function stopTimer() {
     if(game.isOver == true){
       
       if(game.userGuessedCapital == true && distance > 0){
-        let buttons = document.getElementsByClassName("letter");
-        for(var counter = 0; counter < buttons.length; counter++){
-          buttons[counter].disabled = false;
-          }
+        //let buttons = document.getElementsByClassName("letter");
+        //for(var counter = 0; counter < buttons.length; counter++){
+        //  buttons[counter].disabled = false;
+        // }
+        for(int i=0;i<buttonArray.length;i++){
+          document.getElementById(buttonArray[i]).disabled=false;
+        }
         game.resetGameData();
         capital.innerHTML = "";
         countryName.innerHTML = "Country name: ";
