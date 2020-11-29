@@ -123,7 +123,7 @@ function stopTimer() {
     if(game.isOver == true){
       
       if(game.userGuessedCapital == true && distance > 0){
-        let buttons = document.getElementsByClassName("letter btn btn-primary");
+        let buttons = document.getElementsByClassName("letter");
         for(var counter = 0; counter < buttons.length; counter++){
           buttons[counter].disabled = false;
           }
