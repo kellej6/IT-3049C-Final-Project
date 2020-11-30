@@ -24,8 +24,39 @@ class MatchIt {
       return await fetch(url)
         .then(response => response.json())
         .then(data => {
-          console.log(data)
+          //console.log(data)
           this.capital = data.capital.toLowerCase();
+
+          // need a replace non-English characters function
+          // a
+          this.capital = this.capital.replace(String.fromCharCode(224), 'a')
+          this.capital = this.capital.replace(String.fromCharCode(225), 'a')
+          this.capital = this.capital.replace(String.fromCharCode(226), 'a')
+          this.capital = this.capital.replace(String.fromCharCode(227), 'a')
+          this.capital = this.capital.replace(String.fromCharCode(228), 'a')
+          this.capital = this.capital.replace(String.fromCharCode(229), 'a')
+          // c
+          this.capital = this.capital.replace(String.fromCharCode(231), 'c')
+          // e
+          this.capital = this.capital.replace(String.fromCharCode(232), 'e')
+          this.capital = this.capital.replace(String.fromCharCode(233), 'e')
+          this.capital = this.capital.replace(String.fromCharCode(234), 'e')
+          this.capital = this.capital.replace(String.fromCharCode(235), 'e')
+          // i
+          this.capital = this.capital.replace(String.fromCharCode(236), 'i')
+          this.capital = this.capital.replace(String.fromCharCode(237), 'i')
+          this.capital = this.capital.replace(String.fromCharCode(238), 'i')
+          this.capital = this.capital.replace(String.fromCharCode(239), 'i')
+          // n
+          this.capital = this.capital.replace(String.fromCharCode(241), 'n')
+          // o
+          this.capital = this.capital.replace(String.fromCharCode(240), 'o')
+          this.capital = this.capital.replace(String.fromCharCode(242), 'o')
+          this.capital = this.capital.replace(String.fromCharCode(243), 'o')
+          this.capital = this.capital.replace(String.fromCharCode(244), 'o')
+          this.capital = this.capital.replace(String.fromCharCode(245), 'o')
+          this.capital = this.capital.replace(String.fromCharCode(246), 'o')
+
           return data.name;
         });
     } catch {
@@ -139,6 +170,8 @@ class MatchIt {
 
     let wordHolder = "";
     var checkCase = /^[A-Za-z]+$/;
+
+    // console.log(this.capital);
 
     for (let i = 0; i < this.capital.length; i++) {
       if (this.capital[i] == this.guesses[this.guesses.length - 1]) { wordHolder += this.capital[i]; }
