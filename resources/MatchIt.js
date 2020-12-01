@@ -16,6 +16,7 @@ class MatchIt {
 
     this.canvas = _canvas;
     this.ctx = this.canvas.getContext("2d");
+    this.ctx.lineWidth = 5;
   }
 
   async getRandomCountry(isoCode) {
@@ -24,7 +25,7 @@ class MatchIt {
       return await fetch(url)
         .then(response => response.json())
         .then(data => {
-          console.log(data)
+          
           this.capital = data.capital.toLowerCase();
 
           // need a replace non-English characters function
@@ -57,6 +58,9 @@ class MatchIt {
           this.capital = this.capital.replace(String.fromCharCode(245), 'o')
           this.capital = this.capital.replace(String.fromCharCode(246), 'o')
 
+          // s
+          this.capital = this.capital.replace(String.fromCharCode(351), 's');
+          
           return data.name;
         });
     } catch {
@@ -66,9 +70,9 @@ class MatchIt {
   }
 
   async start() {
-    const countriesIsoCode = ["AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "XK", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "AN", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RS", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "CS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "XT", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW"];
+    const countriesIsoCode = ["AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GN", "GW", "GY", "HT", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "XK", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "AN", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RS", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "CS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "XT", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW"];
 
-    var randValue = (Math.random() * 252);
+    var randValue = (Math.random() * 251);
     this.isoCode = countriesIsoCode[Math.floor(randValue)];
     const randomCountry = await this.getRandomCountry(this.isoCode);
     this.country = randomCountry;
@@ -216,68 +220,69 @@ class MatchIt {
 
   drawBase() {
     this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(162.5, 290, 175, 10);
+    this.ctx.fillRect(92.5, 290, 175, 10);
   }
 
   drawMainBeam() {
     this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(245, 10, 10, 280);
+    this.ctx.fillRect(175, 10, 10, 280);
   }
 
   drawNoose() {
     this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(395, 10, 10, 50);
+    this.ctx.fillRect(325, 10, 10, 50);
   }
 
   drawTop() {
     this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(245, 10, 150, 10);
+    this.ctx.fillRect(175, 10, 150, 10);
   }
 
   drawHead() {
     this.ctx.strokeStyle = 'white';
     this.ctx.beginPath();
-    this.ctx.arc(400, 100, 40, 0, 2 * Math.PI);
+    this.ctx.arc(330, 100, 40, 0, 2 * Math.PI);
     this.ctx.stroke();
+    
   }
 
   drawBody() {
     this.ctx.strokeStyle = 'white';
     this.ctx.beginPath();
-    this.ctx.moveTo(400, 140);
-    this.ctx.lineTo(400, 270);
+    this.ctx.moveTo(330, 140);
+    this.ctx.lineTo(330, 270);
     this.ctx.stroke();
   }
 
   drawLeftArm() {
     this.ctx.strokeStyle = 'white';
     this.ctx.beginPath();
-    this.ctx.moveTo(400, 140);
-    this.ctx.lineTo(320, 200);
+    this.ctx.moveTo(330, 140);
+    this.ctx.lineTo(250, 200);
     this.ctx.stroke();
   }
 
   drawRightArm() {
     this.ctx.strokeStyle = 'white';
     this.ctx.beginPath();
-    this.ctx.moveTo(400, 140);
-    this.ctx.lineTo(490, 200);
+    this.ctx.moveTo(330, 140);
+    this.ctx.lineTo(420, 200);
     this.ctx.stroke();
   }
 
   drawLeftLeg() {
     this.ctx.strokeStyle = 'white';
     this.ctx.beginPath();
-    this.ctx.moveTo(400, 270);
-    this.ctx.lineTo(320, 390);
+    this.ctx.moveTo(330, 270);
+    this.ctx.lineTo(250, 390);
     this.ctx.stroke();
   }
 
   drawRightLeg() {
     this.ctx.strokeStyle = 'white';
     this.ctx.beginPath();
-    this.ctx.moveTo(400, 270);
-    this.ctx.lineTo(490, 390);
+    this.ctx.moveTo(330, 270);
+    this.ctx.lineTo(420, 390);
     this.ctx.stroke();
   }
 }

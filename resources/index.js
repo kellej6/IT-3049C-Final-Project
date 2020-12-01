@@ -5,12 +5,14 @@ let guessButton = document.getElementById("guessSubmitButton");
 let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
 let gameScore = document.getElementById("gameScore");
+let overallScore = document.getElementById("overAllScore");
 
 let buttonArray = new Array();
 
 let timer;  // the timer function
 let twoMinutesFromNow; // the time two minutes from now
-let win_count; //  the count of times the player has won
+let win_count = 0; //  the count of times the player has won
+let overAllGuesses = 0;
 let distance; // the time distance between twoMinutesFromNow and rightnow
 
 let game = new MatchIt(canvas)
@@ -106,48 +108,56 @@ function startFunction() {
 
 function passToGuessInput(id) {
   document.getElementById("guessInput").value = id;
-  guessInput = document.getElementById("guessInput"); //h
-  document.getElementById(guessInput.value).disabled = true;
-
+  guessInput = document.getElementById("guessInput");
+  document.getElementById("guessSubmitButton").focus();
 }
 
 guessForm.addEventListener("submit", function (e) {
   e.preventDefault();
   // retrieve win count from session storage
   win_count = sessionStorage.getItem("wincount");
-  guessInput = document.getElementById("guessInput"); //h
+  overAllGuesses = sessionStorage.getItem("OverAllCount");
+  guessInput = document.getElementById("guessInput");
   buttonArray.push(guessInput.value);
-  //document.getElementById(guessInput.value).disabled = true;
+  document.getElementById(guessInput.value).disabled = true;
   game.guess(guessInput.value);
   capital.innerHTML = game.getWordHolderText();
   guessInput.value = "";
   if (game.isOver == true) {
+    overAllGuesses++;
+    sessionStorage.setItem("OverAllCount", overAllGuesses);
     if (game.userGuessedCapital == true && distance > 0) {
       for (i = 0; i < buttonArray.length; i++) {
         document.getElementById(buttonArray[i]).disabled = false;
       }
       // set win count to 1
-      if (win_count) {
-        win_count = 0;
-      }
+      // if (win_count) {
+      //   win_count = 0;
+      // }
       game.resetGameData();
       capital.innerHTML = "";
       countryName.innerHTML = "Country name: ";
       win_count++;
+      console.log(win_count);
       // store win_count to session storage
       sessionStorage.setItem("wincount", win_count);
-      gameScore.innerHTML = "Your Score is: " + game.score;
+      gameScore.innerHTML = "Your Current Score is: " + game.score;
+      overallScore.innerHTML = "Your Total Score is: " + win_count + "/" + overAllGuesses;
       startFunction();
     }
     else if (game.userGuessedCapital == false) {
       guessSubmitButton.disabled = true;
       guessInput.disabled = true;
       playAgainButton.disabled = false;
-      gameScore.innerHTML = "Your Score is: " + game.score;
+      capital.innerHTML = game.capital;
+      gameScore.innerHTML = "Your Current Score is: " + game.score;
+      overallScore.innerHTML = "Your Total Score is: " + win_count + "/" + overAllGuesses;
       stopTimer();
       alert("Unfortunately! You did not guess.");
     }
+
   }
+  
 });
 function resetGame() {
   location.reload()
