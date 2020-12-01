@@ -1,5 +1,15 @@
 body{
-  background-color: rgb(13, 112, 112);
+  background-color: rgb(102, 87, 46);
+  /* background-image: url("https://www.printawallpaper.com/wp-content/uploads/2020/07/gold_world_map_detail.jpg"); */
+}
+
+.container{
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-image: url("https://www.printawallpaper.com/wp-content/uploads/2020/07/gold_world_map_detail.jpg");
+  max-width: 80%;
+  height: 100%;
+  margin-top: 1%;
 }
 
 h1 {
@@ -36,12 +46,11 @@ p {
  float: left;
  /* margin-left: %;   */
  margin-bottom: 1%;
- 
  text-align: center;
  clear: both;
  height: 300px;
  width:500px;
- border: 1px solid black;
+ border: 1px solid white;
  padding-top: 110px;
 }
 
@@ -58,7 +67,8 @@ p {
 }
 
 #guessSubmitButton, #resetGame, #startButton{
- background-color: lightskyblue;
+ background-color: rgb(106, 89, 46);
+ color: white;
  font-size: 1em;
  align-items: center;
  cursor: pointer;
@@ -66,11 +76,21 @@ p {
  border: solid 1px white;
 }
 
+#guessSubmitButton:disabled, #resetGame:disabled, #startButton:disabled{
+  background-color: rgb(146, 134, 77);
+  color: lightgray;
+}
+
 #guessInput{
  /* padding: 5%; */
  margin-bottom: 2%;
  box-sizing: border-box;
- background-color: lightskyblue;
+ background-color: rgb(146, 134, 77);
+ color:white;
+}
+
+#guessInput::placeholder{
+  color: white;
 }
 
 /* canvas{
@@ -82,11 +102,11 @@ p {
 
 .canvas{
  float: right;
-
+ margin-right: 1%;
 }
 
 .btn {
- background-color: rgb(13, 112, 112);
+ background-color: rgb(146, 134, 77);
  color:black;
  border: solid 1px;
  text-decoration:none;
@@ -96,15 +116,15 @@ p {
  width: 40px;
  margin: 1px;
  outline:none;
-
 } 
-
-/* #wordLines{
-color: lightblue;
-font-size: 2.5rem;
-text-align: center;
-margin-top: 3%;
-/* margin-left: 12%; */
+.btn:hover{
+  background-color: rgb(106, 89, 46);
+  color: white;
+}
+.btn:disabled{
+  background-color: white;
+  color: black;
+}
 
 #timer{
  color:white;
