@@ -5,6 +5,7 @@ let guessButton = document.getElementById("guessSubmitButton");
 let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
 let gameScore = document.getElementById("gameScore");
+
 let buttonArray = new Array();
 
 let timer;  // the timer function
@@ -112,10 +113,8 @@ function passToGuessInput(id) {
 
 guessForm.addEventListener("submit", function (e) {
   e.preventDefault();
-
   // retrieve win count from session storage
   win_count = sessionStorage.getItem("wincount");
-
   guessInput = document.getElementById("guessInput"); //h
   buttonArray.push(guessInput.value);
   //document.getElementById(guessInput.value).disabled = true;
@@ -123,29 +122,20 @@ guessForm.addEventListener("submit", function (e) {
   capital.innerHTML = game.getWordHolderText();
   guessInput.value = "";
   if (game.isOver == true) {
-
     if (game.userGuessedCapital == true && distance > 0) {
-      //let buttons = document.getElementsByClassName("letter");
-      //for(var counter = 0; counter < buttons.length; counter++){
-      //  buttons[counter].disabled = false;
-      // }
       for (i = 0; i < buttonArray.length; i++) {
         document.getElementById(buttonArray[i]).disabled = false;
       }
-
       // set win count to 1
       if (win_count) {
         win_count = 0;
       }
-
       game.resetGameData();
       capital.innerHTML = "";
       countryName.innerHTML = "Country name: ";
       win_count++;
-
       // store win_count to session storage
       sessionStorage.setItem("wincount", win_count);
-
       gameScore.innerHTML = "Your Score is: " + game.score;
       startFunction();
     }
@@ -159,8 +149,6 @@ guessForm.addEventListener("submit", function (e) {
     }
   }
 });
-
-
 function resetGame() {
   location.reload()
 
