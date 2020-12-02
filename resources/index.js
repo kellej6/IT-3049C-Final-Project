@@ -6,9 +6,7 @@ let playAgainButton = document.getElementById("resetGame");
 let capital = document.getElementById("capital");
 let gameScore = document.getElementById("gameScore");
 let overallScore = document.getElementById("overAllScore");
-
 let buttonArray = new Array();
-
 let timer;  // the timer function
 let twoMinutesFromNow; // the time two minutes from now
 let win_count = 0; //  the count of times the player has won
@@ -48,20 +46,12 @@ function setTimer() {
   twoMinutesFromNow = new Date();
   twoMinutesFromNow.setMinutes(twoMinutesFromNow.getMinutes() + 2);
   twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() + 2);
-
+  win_count = sessionStorage.getItem("wincount");
+  console.log(win_count)
   // decrement the timer by 30 seconds for each 10 additional wins
-  switch (win_count) {
-    case 10:
-      twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 30);
-      break;
-    case 20:
-      twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 60);
-      break;
-    case 30:
-      twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 90);
-    default:
-      break;
-  }
+  if (win_count > 30) { twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 90); }
+  else if (win_count > 20) { twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 60); }
+  else if (win_count > 10) { twoMinutesFromNow.setSeconds(twoMinutesFromNow.getSeconds() - 30); }
 }
 
 // start the timer
@@ -115,7 +105,7 @@ function passToGuessInput(id) {
 guessForm.addEventListener("submit", function (e) {
   e.preventDefault();
   // retrieve win count from session storage
-  win_count = sessionStorage.getItem("wincount");
+
   overAllGuesses = sessionStorage.getItem("OverAllCount");
   guessInput = document.getElementById("guessInput");
   buttonArray.push(guessInput.value);
@@ -123,22 +113,20 @@ guessForm.addEventListener("submit", function (e) {
   game.guess(guessInput.value);
   capital.innerHTML = game.getWordHolderText();
   guessInput.value = "";
+
   if (game.isOver == true) {
     overAllGuesses++;
     sessionStorage.setItem("OverAllCount", overAllGuesses);
+
     if (game.userGuessedCapital == true && distance > 0) {
-      for (i = 0; i < buttonArray.length; i++) {
-        document.getElementById(buttonArray[i]).disabled = false;
-      }
-      // set win count to 1
-      // if (win_count) {
-      //   win_count = 0;
-      // }
+      for (i = 0; i < buttonArray.length; i++) { document.getElementById(buttonArray[i]).disabled = false; }
+
       game.resetGameData();
       capital.innerHTML = "";
       countryName.innerHTML = "Country name: ";
       win_count++;
       console.log(win_count);
+
       // store win_count to session storage
       sessionStorage.setItem("wincount", win_count);
       gameScore.innerHTML = "Your Current Score is: " + game.score;
@@ -155,18 +143,15 @@ guessForm.addEventListener("submit", function (e) {
       stopTimer();
       alert("Unfortunately! You did not guess.");
     }
-
   }
-  
 });
+
 function resetGame() {
   location.reload()
-
 };
-try {
-} catch (error) {
+
+try { }
+catch (error) {
   console.error(error);
   alert(error);
 }
- // }
-//}
