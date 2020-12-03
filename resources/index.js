@@ -13,7 +13,9 @@ let win_count = 0; //  the count of times the player has won
 let overAllGuesses = 0;
 let distance; // the time distance between twoMinutesFromNow and rightnow
 
-let game = new MatchIt(canvas)
+
+try { 
+  let game = new MatchIt(canvas)
 
 function countdown() {
   // the time as of right now
@@ -150,7 +152,7 @@ function resetGame() {
   location.reload()
 };
 
-try { }
+}
 catch (error) {
   console.error(error);
   alert(error);
